@@ -151,7 +151,7 @@
 
         function render() {
             echo '
-            <div class="d-flex justify-content-center col-lg-1 col-md-2 col-sm-12 m-2 px-2">
+            <div class="d-flex justify-content-center col-lg-1 col-md-2 col-sm-12 my-2 px-2">
             <a class="btn btn-link text-decoration-none" href="publisher_list.php?id='.$this->publisher_id.'">'.$this->name.'</a></div>';
         }
 
