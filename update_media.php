@@ -78,7 +78,7 @@ include 'head.php';
             <small id="authorHelp" class="form-text text-muted">Input the img path (resources/img/book.png)</small>
         </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Example select</label>
+            <label for="exampleFormControlSelect1">Availability</label>
             <select class="form-control" name="availability" id="exampleFormControlSelect1">
               <option value="1">available</option>
               <option value="0">not available</option>
