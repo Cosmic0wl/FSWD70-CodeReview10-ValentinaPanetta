@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2019 at 10:14 PM
+-- Generation Time: Jul 14, 2019 at 01:25 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -61,7 +61,9 @@ INSERT INTO `authors` (`author_id`, `name`, `surname`) VALUES
 (17, '', ''),
 (18, 'Valentina', ''),
 (19, 'Valentina', 'Panetta'),
-(20, 'Valentina', 'Pahr');
+(20, 'Valentina', 'Pahr'),
+(21, 'gaia', ''),
+(22, 'gaia', 'Panetta');
 
 -- --------------------------------------------------------
 
@@ -87,9 +89,7 @@ INSERT INTO `books` (`book_id`, `isbn`, `pages`, `written_language`, `fk_media`)
 (2, 1934555649, 108, 'English', 2),
 (3, 1812988027, 368, 'English', 3),
 (4, 2147483647, 480, 'English', 4),
-(5, 2147483647, 253, 'French', 5),
-(8, 111111, 123, 'English', 18),
-(12, 111111, 203, 'English', 22);
+(5, 2147483647, 253, 'French', 5);
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,9 @@ CREATE TABLE `cds` (
 INSERT INTO `cds` (`cd_id`, `num_of_discs`, `num_of_tracks`, `length`, `fk_media`) VALUES
 (3, 1, 14, 33, 13),
 (4, 1, 14, 47, 14),
-(5, 1, 11, 47, 15);
+(5, 1, 11, 47, 15),
+(7, 1, 14, 45, 30),
+(8, 0, 11, 40, 31);
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,8 @@ INSERT INTO `dvds` (`dvd_id`, `audio_description`, `aspect_ratio`, `subtitles`, 
 (2, 'English', '1.85:1', 'Italian', 132, 'Restricted', 7),
 (3, 'English', 'NTSC', 'German', 127, 'Restricted', 8),
 (4, 'English', 'Widescreen', 'French', 97, 'PG-13', 9),
-(5, 'English', 'Widescreen', 'Spanish', 211, 'Restricted', 10);
+(5, 'English', 'Widescreen', 'Spanish', 211, 'Restricted', 10),
+(9, 'English', 'ac3', 'Spanish', 94, 'Rated R', 33);
 
 -- --------------------------------------------------------
 
@@ -200,11 +203,11 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`media_id`, `title`, `img_path`, `description`, `availability`, `publish_date`, `fk_genre`, `fk_publisher`, `fk_author`) VALUES
-(1, 'Dracula', 'resources/img/book.png', 'Count Dracula, a 15th-century prince, is condemned to live off the blood of the living for ever.', 0, '1897-05-25', 1, 1, 1),
+(1, 'Dracula', 'resources/img/book.png', 'Count Dracula, a 15th-century prince, is condemned to live off the blood of the living for ever.', 1, '1897-05-25', 1, 1, 1),
 (2, 'Carmilla', 'resources/img/book.png', 'Carmilla is an 1872 Gothic novella by Irish author Joseph Sheridan Le Fanu and one of the early works of vampire fiction, predating Bram Stokers Dracula by 26 years', 1, '1872-09-16', 1, 2, 2),
 (3, 'The Girls', 'resources/img/book.png', 'The Girls is a 2016 debut novel by American author Emma Cline. It is loosely inspired by the Manson Family and the murder of actress Sharon Tate.', 1, '2016-06-14', 9, 3, 3),
-(4, 'Pride and Prejudice', 'resources/img/book.png', 'Pride and Prejudice is a romance novel filled with comedy, its humor lies in its honest depiction of manners, education, marriage and money during the Regency era in Great Britain.', 0, '1813-01-28', 3, 4, 4),
-(5, 'La Nausee', 'resources/img/book.png', 'The novel takes place in Bouville and it concerns a dejected historian, who becomes convinced that inanimate objects and situations encroach on his ability to define himself,evoking in the protagonist a sense of nausea.', 0, '1938-02-21', 9, 5, 5),
+(4, 'Pride and Prejudice', 'resources/img/book.png', 'Pride and Prejudice is a romance novel filled with comedy, its humor lies in its honest depiction of manners, education, marriage and money during the Regency era in Great Britain.', 1, '1813-01-28', 3, 4, 4),
+(5, 'La Nausee', 'resources/img/book.png', 'The novel takes place in Bouville and it concerns a dejected historian, who becomes convinced that inanimate objects and situations encroach on his ability to define himself, evoking in the protagonist a sense of nausea.', 1, '1938-02-21', 6, 5, 5),
 (7, 'Call Me By Your Name', 'resources/img/movie.png', 'In the summer of 1983, 17-year-old Elio Perlman is spending the days with his family at their 17th-century villa in Lombardy, Italy. He soon meets Oliver, a handsome doctoral student who is working as an intern for Elios father.', 1, '2017-10-20', 6, 7, 7),
 (8, 'Hereditary', 'resources/img/movie.png', 'When the matriarch of the Graham family passes away, her daughter and grandchildren begin to unravel cryptic and increasingly terrifying secrets about their ancestry, trying to outrun the sinister fate they have inherited.', 0, '2018-06-07', 1, 6, 8),
 (9, 'Mean Girls', 'resources/img/movie.png', 'Cady Heron is a hit with The Plastics, the A-list girl clique at her new school, until she makes the mistake of falling for Aaron Samuels, the ex-boyfriend of alpha Plastic Regina George.', 1, '2004-04-30', 4, 8, 9),
@@ -212,11 +215,9 @@ INSERT INTO `media` (`media_id`, `title`, `img_path`, `description`, `availabili
 (13, 'Be the Cowboy', 'resources/img/cd.png', 'Be the Cowboy is the fifth studio album by Japanese-American indie rock musician Mitski.', 1, '2018-08-17', 14, 10, 13),
 (14, 'Electra Heart', 'resources/img/cd.png', 'Electra Heart is the second studio album by Welsh singer Marina Diamandis, released under the stage name Marina and the Diamonds', 1, '2012-04-27', 11, 11, 14),
 (15, 'In your own Sweet Time', 'resources/img/cd.png', 'In Your Own Sweet Time is the fifth studio album by Scottish rock band, The Fratellis.', 1, '2018-03-16', 14, 12, 15),
-(18, 'titlel', 'img', '', 0, '2019-02-13', 3, 1, 19),
-(22, 'titlel', 'img', 'fdfadfdafdaf', 1, '2019-02-13', 6, 4, 19),
-(24, 'titlel', 'img', 'rwafeafae', 1, '2019-02-13', 6, 6, 19),
-(25, 'titlel', 'img', 'gssfgs', 1, '2019-02-13', 1, 6, 19),
-(26, 'titlel', '2www', 'kfhajldhflad', 1, '2019-02-13', 1, 8, 19);
+(30, 'Wasteland Baby', 'resources/img/cd.png', 'Second album for Irish song-writer Hozier', 1, '2019-03-13', 14, 9, 11),
+(31, 'High as Hope', 'resources/img/cd.png', 'Third album for Florence Welch.', 1, '2017-06-13', 14, 9, 12),
+(33, 'Lady Bird', 'resources/img/movie.png', 'Marion McPherson, a nurse, works tirelessly to keep her family afloat after her husband loses his job. She also maintains a turbulent bond with a teenage daughter who is just like her: loving, strong-willed and deeply opinionated.', 1, '2017-11-03', 4, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -310,7 +311,7 @@ ALTER TABLE `publishers`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `books`
@@ -322,13 +323,13 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `cds`
 --
 ALTER TABLE `cds`
-  MODIFY `cd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `dvds`
 --
 ALTER TABLE `dvds`
-  MODIFY `dvd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `dvd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `genres`
@@ -340,7 +341,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `publishers`
